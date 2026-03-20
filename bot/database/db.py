@@ -4,6 +4,9 @@ from datetime import datetime
 
 DB_PATH = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(__file__))), "khata.db")
 
+# Sentinel value used as to_user when a transaction is against the group itself
+GROUP_SENTINEL = 0
+
 
 def get_connection():
     conn = sqlite3.connect(DB_PATH)

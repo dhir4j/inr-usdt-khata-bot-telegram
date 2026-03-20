@@ -2,17 +2,13 @@ from telegram import Update
 from telegram.ext import ContextTypes
 
 from bot.database.db import set_price, get_price
-from bot.utils.helpers import is_group_admin, is_group_chat
+from bot.utils.helpers import is_group_chat
 
 
 async def setprice_cmd(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.effective_message
     if not is_group_chat(update):
         await msg.reply_text("⚠️ This command works only in groups.")
-        return
-
-    if not await is_group_admin(update):
-        await msg.reply_text("🚫 Only group admins can set the price.")
         return
 
     if not context.args or len(context.args) != 1:

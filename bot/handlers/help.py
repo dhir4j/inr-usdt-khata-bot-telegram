@@ -6,26 +6,19 @@ HELP_TEXT = (
     "━━━━━━━━━━━━━━━━━━━━\n\n"
 
     "💱 <b>Currency</b>\n"
-    "  /setprice &lt;price&gt; — Set USDT rate <i>(admin)</i>\n"
+    "  /setprice &lt;price&gt; — Set USDT rate\n"
     "  /price — Show current USDT rate\n"
     "  /convert &lt;amount&gt; &lt;inr/usdt&gt; — Convert currency\n\n"
 
-    "👥 <b>Users</b>\n"
-    "  /add @user — Add user to ledger <i>(admin)</i>\n"
-    "  /del @user — Remove user <i>(admin)</i>\n"
-    "  /users — Show all balances\n\n"
-
     "💸 <b>Transactions</b>\n"
-    "  /debit @user &lt;amount&gt; &lt;inr/usdt&gt; [note]\n"
-    "  /credit @user &lt;amount&gt; &lt;inr/usdt&gt; [note]\n"
-    "  /salary @user &lt;amount&gt; &lt;inr/usdt&gt; [note]\n\n"
+    "  /debit &lt;amount&gt; &lt;inr/usdt&gt; [note] — Record money you gave to group\n"
+    "  /credit &lt;amount&gt; &lt;inr/usdt&gt; [note] — Record money you received from group\n\n"
 
     "📊 <b>Ledger</b>\n"
-    "  /balance @user — Balance summary\n"
-    "  /ledger @user — Full transaction history\n"
-    "  /settle @user — Mark balance as settled\n"
-    "  /export — Export all transactions to CSV\n"
-    "  /export @user — Export transactions with a user\n\n"
+    "  /balance — Your balance with the group\n"
+    "  /ledger — Your transaction history\n"
+    "  /settle — Mark your balance as settled\n"
+    "  /export — Export all transactions to CSV\n\n"
 
     "━━━━━━━━━━━━━━━━━━━━\n"
     "💡 Both INR & USDT shown in all responses"

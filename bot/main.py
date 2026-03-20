@@ -8,8 +8,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, CallbackQueryHandle
 from bot.database.db import init_db
 from bot.handlers.price import setprice_cmd, price_cmd
 from bot.handlers.convert import convert_cmd
-from bot.handlers.users import add_cmd, del_cmd, users_cmd
-from bot.handlers.transactions import debit_cmd, credit_cmd, salary_cmd
+from bot.handlers.transactions import debit_cmd, credit_cmd
 from bot.handlers.ledger import balance_cmd, ledger_cmd, ledger_callback, settle_cmd
 from bot.handlers.export import export_cmd
 from bot.handlers.help import help_cmd
@@ -35,12 +34,8 @@ def main():
     app.add_handler(CommandHandler("setprice", setprice_cmd))
     app.add_handler(CommandHandler("price",    price_cmd))
     app.add_handler(CommandHandler("convert",  convert_cmd))
-    app.add_handler(CommandHandler("add",      add_cmd))
-    app.add_handler(CommandHandler("del",      del_cmd))
-    app.add_handler(CommandHandler("users",    users_cmd))
     app.add_handler(CommandHandler("debit",    debit_cmd))
     app.add_handler(CommandHandler("credit",   credit_cmd))
-    app.add_handler(CommandHandler("salary",   salary_cmd))
     app.add_handler(CommandHandler("balance",  balance_cmd))
     app.add_handler(CommandHandler("ledger",   ledger_cmd))
     app.add_handler(CommandHandler("settle",   settle_cmd))
@@ -50,19 +45,15 @@ def main():
     app.add_handler(CommandHandler("start", help_cmd))
 
     commands = [
-        BotCommand("setprice", "Set USDT price in INR (admin)"),
+        BotCommand("setprice", "Set USDT price in INR"),
         BotCommand("price",    "Show current USDT rate"),
         BotCommand("convert",  "Convert between INR and USDT"),
-        BotCommand("add",      "Add user to ledger (admin)"),
-        BotCommand("del",      "Remove user from ledger (admin)"),
-        BotCommand("debit",    "Record money you gave to user"),
-        BotCommand("credit",   "Record money received from user"),
-        BotCommand("salary",   "Record salary paid to user"),
-        BotCommand("balance",  "Show balance with a user"),
-        BotCommand("ledger",   "Show transaction history with a user"),
-        BotCommand("users",    "Show all users with balances"),
-        BotCommand("settle",   "Reset balance to zero"),
-        BotCommand("export",   "Export ledger to CSV file"),
+        BotCommand("debit",    "Record money you gave to group"),
+        BotCommand("credit",   "Record money you received from group"),
+        BotCommand("balance",  "Show your balance with the group"),
+        BotCommand("ledger",   "Show your transaction history"),
+        BotCommand("settle",   "Reset your balance to zero"),
+        BotCommand("export",   "Export all transactions to CSV"),
         BotCommand("help",     "Show command guide"),
     ]
     app.bot.set_my_commands(commands, scope=BotCommandScopeAllGroupChats())
